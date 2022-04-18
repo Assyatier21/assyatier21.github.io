@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import MyNavbar from "./components/MyNavbar";
+import Home from "./pages/Home";
+import Contact from "./pages/Contact";
+import Work from "./pages/Work";
+import { Helmet } from "react-helmet";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <MyNavbar />
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/contact">
+            <Contact />
+          </Route>
+          <Route exact path="/work">
+            <Work />
+          </Route>
+        </Switch>
+      </div>
+      <Helmet>
+        <script
+          type="text/javascript"
+          src="https://unpkg.com/typer-dot-js@0.1.0/typer.js"
+        />
+      </Helmet>
+    </Router>
   );
 }
 
